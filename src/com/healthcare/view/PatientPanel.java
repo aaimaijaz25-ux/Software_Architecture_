@@ -9,7 +9,7 @@ import java.awt.*;
 import java.util.List;
 
 /**
- * Patient management Panel 
+ * Patient Management Panel 
  */
 public class PatientPanel extends JPanel {
     private HealthcareController controller;
