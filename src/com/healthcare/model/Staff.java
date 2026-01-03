@@ -1,8 +1,6 @@
 package com.healthcare.model;
 
-/**
- * Staff (non-clinical) Model class 
- */
+/* Staff (non-clinical) Model class */
 public class Staff {
     private String staffID;
     private String firstName;

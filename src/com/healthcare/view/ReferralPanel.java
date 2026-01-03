@@ -9,9 +9,7 @@ import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.util.List;
 
-/**
- * Referral Management Panel
- */
+/* Referral Management Panel */
 public class ReferralPanel extends JPanel {
 
     private HealthcareController controller;
@@ -128,7 +126,7 @@ public class ReferralPanel extends JPanel {
         panel.add(field, gbc);
     }
 
-    /* ================= BUTTON PANEL ================= */
+        /* BUTTON PANEL */
 
     private JPanel createButtonPanel() {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 5));

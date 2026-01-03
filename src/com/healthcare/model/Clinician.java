@@ -1,8 +1,6 @@
 package com.healthcare.model;
 
-/**
- * Clinicain Model class
- */
+/* Clinicain Model class */
 public class Clinician {
     private String clinicianID;
     private String firstName;

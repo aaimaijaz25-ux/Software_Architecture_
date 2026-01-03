@@ -9,9 +9,7 @@ import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.util.List;
 
-/**
-Staff Management Panel
- */
+/* Staff Management Panel */
 public class StaffPanel extends JPanel {
 
     private HealthcareController controller;
@@ -32,7 +30,7 @@ public class StaffPanel extends JPanel {
         setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         setBackground(new Color(245, 247, 250));
 
-        // ================= TABLE =================
+        // TABLE 
         String[] columns = {
                 "Staff ID", "First Name", "Last Name", "Role", "Department",
                 "Facility ID", "Email", "Phone", "Employment Status",
@@ -68,13 +66,13 @@ public class StaffPanel extends JPanel {
         scrollPane.setBorder(BorderFactory.createTitledBorder("Staff"));
         add(scrollPane, BorderLayout.CENTER);
 
-        // ================= FORM =================
+        // FORM 
         JPanel formPanel = createFormPanel();
         formPanel.setBorder(BorderFactory.createTitledBorder("Staff Details"));
         formPanel.setBackground(new Color(250, 250, 250));
         add(formPanel, BorderLayout.SOUTH);
 
-        // ================= BUTTONS =================
+        // BUTTONS
         JPanel buttonPanel = createButtonPanel();
         buttonPanel.setBackground(new Color(245, 247, 250));
         add(buttonPanel, BorderLayout.NORTH);
@@ -121,7 +119,7 @@ public class StaffPanel extends JPanel {
         panel.add(field, gbc);
     }
 
-    /* ================= BUTTON PANEL ================= */
+        /* BUTTON PANEL */
     
     private JPanel createButtonPanel() {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 5));

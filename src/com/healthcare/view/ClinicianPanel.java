@@ -9,9 +9,7 @@ import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.util.List;
 
-/**
- * Clinician Management Panel
- */
+/* Clinician Management Panel */
 public class ClinicianPanel extends JPanel {
 
     private HealthcareController controller;
@@ -32,7 +30,7 @@ public class ClinicianPanel extends JPanel {
         setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         setBackground(new Color(245, 247, 250)); // SAME AS PATIENT
 
-        /* ================= TABLE ================= */
+        /* TABLE */
         String[] columns = {
                 "Clinician ID", "First Name", "Last Name", "Title",
                 "Specialty", "GMC Number", "Workplace ID", "Workplace Type",
@@ -69,13 +67,13 @@ public class ClinicianPanel extends JPanel {
         scrollPane.setBorder(BorderFactory.createTitledBorder("Clinicians"));
         add(scrollPane, BorderLayout.CENTER);
 
-        /* ================= FORM ================= */
+        /* FORM */
         JPanel formPanel = createFormPanel();
         formPanel.setBorder(BorderFactory.createTitledBorder("Clinician Details"));
         formPanel.setBackground(new Color(250, 250, 250));
         add(formPanel, BorderLayout.SOUTH);
 
-        /* ================= BUTTONS ================= */
+        /* BUTTONS */
         JPanel buttonPanel = createButtonPanel();
         buttonPanel.setBackground(new Color(245, 247, 250));
         add(buttonPanel, BorderLayout.NORTH);
@@ -123,7 +121,7 @@ public class ClinicianPanel extends JPanel {
         panel.add(field, gbc);
     }
 
-    /* ================= BUTTON PANEL ================= */
+        /* BUTTON PANEL */
 
     private JPanel createButtonPanel() {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 5));
@@ -150,7 +148,7 @@ public class ClinicianPanel extends JPanel {
 
         return panel;
     }
-    /* ================= CRUD ================= */
+        /* CRUD */
 
     private void addClinician() {
         Clinician c = getClinicianFromForm();

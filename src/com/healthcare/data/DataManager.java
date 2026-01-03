@@ -7,9 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Data Manager class to load and manage all healthcare data
- */
+/* Data Manager class to load and manage all healthcare data */
 public class DataManager {
     private List<Patient> patients;
     private List<Clinician> clinicians;
@@ -29,9 +27,7 @@ public class DataManager {
         staff = new ArrayList<>();
     }
 
-    /**
-     * Load all CSV files from the data directory
-     */
+    /* Load all CSV files from the data directory */
     public void loadAllData(String dataDirectory) {
         loadPatients(dataDirectory + "/patients.csv");
         loadClinicians(dataDirectory + "/clinicians.csv");
@@ -42,9 +38,7 @@ public class DataManager {
         loadStaff(dataDirectory + "/staff.csv");
     }
 
-    /**
-     * Parse CSV line handling quoted fields
-     */
+    /* Parse CSV line handling quoted fields */
     private String[] parseCSVLine(String line) {
         List<String> fields = new ArrayList<>();
         boolean inQuotes = false;
@@ -70,9 +64,7 @@ public class DataManager {
             String line = br.readLine(); // Skip header
             while ((line = br.readLine()) != null && !line.trim().isEmpty()) {
                 String[] fields = parseCSVLine(line);
-                // Expected CSV (patients.csv):
-                // patient_id,first_name,last_name,date_of_birth,nhs_number,gender,phone_number,email,address,postcode,emergency_contact_name,emergency_contact_phone,registration_date,gp_surgery_id
-                if (fields.length >= 14) {
+                // patients.csv
                     Patient patient = new Patient(
                         fields[0],  // patient_id
                         fields[1],  // first_name
@@ -102,8 +94,7 @@ public class DataManager {
             String line = br.readLine(); // Skip header
             while ((line = br.readLine()) != null && !line.trim().isEmpty()) {
                 String[] fields = parseCSVLine(line);
-                // Expected CSV (clinicians.csv):
-                // clinician_id,first_name,last_name,title,speciality,gmc_number,phone_number,email,workplace_id,workplace_type,employment_status,start_date
+                // clinicians.csv
                 if (fields.length >= 12) {
                     Clinician clinician = new Clinician(
                         fields[0],  // clinician_id
@@ -132,8 +123,7 @@ public class DataManager {
             String line = br.readLine(); // Skip header
             while ((line = br.readLine()) != null && !line.trim().isEmpty()) {
                 String[] fields = parseCSVLine(line);
-                // Expected CSV (facilities.csv):
-                // facility_id,facility_name,facility_type,address,postcode,phone_number,email,opening_hours,manager_name,capacity,specialities_offered
+                // facilities.csv
                 if (fields.length >= 11) {
                     Facility facility = new Facility(
                         fields[0],  // facility_id
@@ -161,9 +151,7 @@ public class DataManager {
             String line = br.readLine(); // Skip header
             while ((line = br.readLine()) != null && !line.trim().isEmpty()) {
                 String[] fields = parseCSVLine(line);
-                // Expected CSV (appointments.csv):
-                // appointment_id,patient_id,clinician_id,facility_id,appointment_date,appointment_time,
-                // duration_minutes,appointment_type,status,reason_for_visit,notes,created_date,last_modified
+                // appointments.csv
                 if (fields.length >= 13) {
                     Appointment appointment = new Appointment(
                         fields[0],  // appointment_id
@@ -193,9 +181,7 @@ public class DataManager {
             String line = br.readLine(); // Skip header
             while ((line = br.readLine()) != null && !line.trim().isEmpty()) {
                 String[] fields = parseCSVLine(line);
-                // Expected CSV (prescriptions.csv):
-                // prescription_id,patient_id,clinician_id,appointment_id,prescription_date,medication_name,
-                // dosage,frequency,duration_days,quantity,instructions,pharmacy_name,status,issue_date,collection_date
+                // prescriptions.csv
                 if (fields.length >= 15) {
                     Prescription prescription = new Prescription(
                         fields[0],   // prescription_id
@@ -227,10 +213,7 @@ public class DataManager {
             String line = br.readLine(); // Skip header
             while ((line = br.readLine()) != null && !line.trim().isEmpty()) {
                 String[] fields = parseCSVLine(line);
-                // Expected CSV (referrals.csv):
-                // referral_id,patient_id,referring_clinician_id,referred_to_clinician_id,
-                // referring_facility_id,referred_to_facility_id,referral_date,urgency_level,
-                // referral_reason,clinical_summary,requested_investigations,status,appointment_id,notes,created_date,last_updated
+                // referrals.csv
                 if (fields.length >= 16) {
                     Referral referral = new Referral(
                         fields[0],   // referral_id
@@ -263,8 +246,7 @@ public class DataManager {
             String line = br.readLine(); // Skip header
             while ((line = br.readLine()) != null && !line.trim().isEmpty()) {
                 String[] fields = parseCSVLine(line);
-                // Expected CSV (staff.csv):
-                // staff_id,first_name,last_name,role,department,facility_id,phone_number,email,employment_status,start_date,line_manager,access_level
+                // staff.csv
                 if (fields.length >= 12) {
                     Staff staffMember = new Staff(
                         fields[0],  // staff_id

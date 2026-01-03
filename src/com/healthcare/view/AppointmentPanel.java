@@ -8,9 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
 
-/**
- * Appointment Management Panel 
- */
+/* Appointment Management Panel */
 
 public class AppointmentPanel extends JPanel {
 
@@ -32,7 +30,7 @@ public class AppointmentPanel extends JPanel {
         setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         setBackground(new Color(245, 247, 250));
 
-        /* ================= TABLE ================= */
+        /* TABLE */
         String[] columns = {
                 "Appointment ID", "Patient ID", "Clinician ID", "Facility ID",
                 "Date", "Time", "Duration (mins)", "Type", "Status",
@@ -69,21 +67,20 @@ public class AppointmentPanel extends JPanel {
         scrollPane.setBorder(BorderFactory.createTitledBorder("Appointments"));
         add(scrollPane, BorderLayout.CENTER);
 
-        /* ================= FORM ================= */
+        /* FORM */
         JPanel formPanel = createFormPanel();
         formPanel.setBorder(BorderFactory.createTitledBorder("Appointment Details"));
         formPanel.setBackground(new Color(250, 250, 250));
         add(formPanel, BorderLayout.SOUTH);
 
-        /* ================= BUTTONS ================= */
+        /* BUTTONS */
         JPanel buttonPanel = createButtonPanel();
         buttonPanel.setBackground(new Color(245, 247, 250));
         add(buttonPanel, BorderLayout.NORTH);
     }
 
-    /* ================= FORM ================= */
-
-    private JPanel createFormPanel() {
+        /* FORM */
+        private JPanel createFormPanel() {
         JPanel panel = new JPanel(new GridBagLayout());
         panel.setBackground(new Color(250, 250, 250));
 
@@ -128,7 +125,7 @@ public class AppointmentPanel extends JPanel {
         panel.add(field, gbc);
     }
 
-    /* ================= BUTTON PANEL ================= */
+        /* BUTTON PANEL */
 
     private JPanel createButtonPanel() {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 5));
@@ -156,7 +153,7 @@ public class AppointmentPanel extends JPanel {
         return panel;
     }
 
-    /* ================= CRUD ================= */
+        /* CRUD */
 
     private void addAppointment() {
         Appointment a = getAppointmentFromForm();

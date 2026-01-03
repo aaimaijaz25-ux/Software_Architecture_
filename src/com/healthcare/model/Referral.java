@@ -1,8 +1,6 @@
 package com.healthcare.model;
 
-/**
- * Referral Model class
- */
+/* Referral Model class */
 public class Referral {
     private String referralID;
     private String patientID;

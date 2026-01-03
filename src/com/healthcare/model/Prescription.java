@@ -1,8 +1,6 @@
 package com.healthcare.model;
 
-/**
- * Prescription Model class 
- */
+/* Prescription Model class */
 public class Prescription {
     private String prescriptionID;
     private String patientID;

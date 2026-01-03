@@ -8,9 +8,7 @@ import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.util.List;
 
-/**
- * Patient Management Panel 
- */
+/* Patient Management Panel */
 public class PatientPanel extends JPanel {
     private HealthcareController controller;
     private JTable table;
@@ -208,8 +206,7 @@ public class PatientPanel extends JPanel {
         return panel;
     }
     
-    /* ================= CRUD ================= */
-    
+        /* CRUD */
     private void addPatient() {
         try {
             Patient patient = createPatientFromForm();

@@ -1,8 +1,6 @@
 package com.healthcare.model;
 
-/**
- * Facility Model class 
- */
+/* Facility Model class */
 public class Facility {
     private String facilityID;
     private String name;

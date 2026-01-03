@@ -4,9 +4,7 @@ import com.healthcare.controller.HealthcareController;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * Main View class - Main GUI window with tabs for different entities
- */
+/* Main View class - Main GUI window with tabs for different entities */
 public class MainView extends JFrame {
 
     private HealthcareController controller;
@@ -37,11 +35,11 @@ public class MainView extends JFrame {
         getContentPane().setBackground(new Color(245, 247, 250));
         setLayout(new BorderLayout());
 
-        // ================= HEADER =================
+        // HEADER
         JPanel header = new JPanel();
         header.setPreferredSize(new Dimension(getWidth(), 110));
         header.setLayout(new BoxLayout(header, BoxLayout.Y_AXIS));
-        header.setBackground(new Color (0, 150, 136)); // Material Green
+        header.setBackground(new Color (0, 150, 136));
         header.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         JLabel titleLabel = new JLabel("Healthcare Management System");
@@ -62,10 +60,10 @@ public class MainView extends JFrame {
 
         add(header, BorderLayout.NORTH);
 
-        // ================= MENU =================
+        // MENU 
         createMenuBar();
 
-        // ================= TABS =================
+        // TABS 
         tabbedPane = new JTabbedPane();
         tabbedPane.setFont(new Font("Gerogia", Font.PLAIN, 14));
         tabbedPane.setBorder(BorderFactory.createEmptyBorder(10, 12, 12, 12));
@@ -89,7 +87,7 @@ public class MainView extends JFrame {
         add(tabbedPane, BorderLayout.CENTER);
     }
 
-    // ================= MENU BAR =================
+        //  MENU BAR 
     private void createMenuBar() {
         JMenuBar menuBar = new JMenuBar();
 
@@ -109,7 +107,7 @@ public class MainView extends JFrame {
         setJMenuBar(menuBar);
     }
 
-    // ================= LOAD DATA =================
+        // LOAD DATA 
     private void loadData() {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -128,7 +126,7 @@ public class MainView extends JFrame {
         }
     }
 
-    // ================= REFRESH =================
+        //  REFRESH 
     public void refreshAllPanels() {
         patientPanel.refreshData();
         clinicianPanel.refreshData();

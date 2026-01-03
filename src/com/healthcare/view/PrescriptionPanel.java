@@ -8,9 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
 
-/**
- * Prescription Management Panel 
- */
+/* Prescription Management Panel */
 
 public class PrescriptionPanel extends JPanel {
 
@@ -34,7 +32,7 @@ public class PrescriptionPanel extends JPanel {
         setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         setBackground(new Color(245, 247, 250));
 
-        /* ================= TABLE ================= */
+        /* TABLE */
         String[] columns = {
                 "Prescription ID", "Patient ID", "Clinician ID", "Appointment ID",
                 "Medication", "Dosage", "Frequency", "Duration Days",
@@ -70,20 +68,19 @@ public class PrescriptionPanel extends JPanel {
         scrollPane.setBorder(BorderFactory.createTitledBorder("Prescriptions"));
         add(scrollPane, BorderLayout.CENTER);
 
-        /* ================= FORM ================= */
+        /* FORM */
         JPanel formPanel = createFormPanel();
         formPanel.setBorder(BorderFactory.createTitledBorder("Prescription Details"));
         formPanel.setBackground(new Color(250, 250, 250));
         add(formPanel, BorderLayout.SOUTH);
 
-        /* ================= BUTTONS ================= */
+        /* BUTTONS */
         JPanel buttonPanel = createButtonPanel();
         buttonPanel.setBackground(new Color(245, 247, 250));
         add(buttonPanel, BorderLayout.NORTH);
     }
 
-    /* ================= FORM ================= */
-
+        /* FORM */
     private JPanel createFormPanel() {
         JPanel panel = new JPanel(new GridBagLayout());
         panel.setBackground(new Color(250, 250, 250));
@@ -130,7 +127,7 @@ public class PrescriptionPanel extends JPanel {
         panel.add(field, gbc);
     }
 
-    /* ================= BUTTON PANEL ================= */
+        /* BUTTON PANEL */
 
     private JPanel createButtonPanel() {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 5));
@@ -158,7 +155,7 @@ public class PrescriptionPanel extends JPanel {
         return panel;
     } 
 
-    /* ================= CRUD ================= */
+        /* CRUD */
 
     private void addPrescription() {
         Prescription p = getPrescriptionFromForm();

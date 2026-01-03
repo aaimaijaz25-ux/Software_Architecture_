@@ -27,9 +27,7 @@ public class ReferralManager {
         ehrUpdates = new ArrayList<>();
     }
 
-    /**
-     * Get the singleton instance
-     */
+    /* Get the singleton instance */
     public static synchronized ReferralManager getInstance() {
         if (instance == null) {
             instance = new ReferralManager();
@@ -37,25 +35,19 @@ public class ReferralManager {
         return instance;
     }
 
-    /**
-     * Set the data manager (dependency injection)
-     */
+    /* Set the data manager (dependency injection) */
     public void setDataManager(DataManager dataManager) {
         this.dataManager = dataManager;
     }
 
-    /**
-     * Add referral to queue
-     */
+    /* Add referral to queue */
     public void addToQueue(Referral referral) {
         referralQueue.add(referral);
         generateEmailCommunication(referral);
         generateEHRUpdate(referral);
     }
 
-    /**
-     * Process referral queue
-     */
+    /* Process referral queue */
     public void processQueue() {
         for (Referral referral : referralQueue) {
             if ("Pending".equals(referral.getStatus())) {
@@ -64,18 +56,14 @@ public class ReferralManager {
         }
     }
 
-    /**
-     * Process a single referral
-     */
+    /* Process a single referral */
     private void processReferral(Referral referral) {
         // Simulate referral processing
         generateEmailCommunication(referral);
         generateEHRUpdate(referral);
     }
 
-    /**
-     * Generate email communication content for referral
-     */
+    /* Generate email communication content for referral */
     private void generateEmailCommunication(Referral referral) {
         StringBuilder email = new StringBuilder();
         email.append("=== REFERRAL EMAIL COMMUNICATION ===\n");
@@ -92,9 +80,7 @@ public class ReferralManager {
         emailCommunications.add(email.toString());
     }
 
-    /**
-     * Generate EHR update content for referral
-     */
+    /* Generate EHR update content for referral */
     private void generateEHRUpdate(Referral referral) {
         StringBuilder ehr = new StringBuilder();
         ehr.append("=== ELECTRONIC HEALTH RECORD UPDATE ===\n");
@@ -111,9 +97,7 @@ public class ReferralManager {
         ehrUpdates.add(ehr.toString());
     }
 
-    /**
-     * Generate referral text file
-     */
+    /* Generate referral text file */
     public void generateReferralFile(Referral referral, String outputPath) {
         try (FileWriter writer = new FileWriter(outputPath)) {
             writer.write("=== PATIENT REFERRAL ===\n\n");
@@ -147,30 +131,22 @@ public class ReferralManager {
         }
     }
 
-    /**
-     * Get all email communications
-     */
+    /* Get all email communications */
     public List<String> getEmailCommunications() {
         return new ArrayList<>(emailCommunications);
     }
 
-    /**
-     * Get all EHR updates
-     */
+    /* Get all EHR updates */
     public List<String> getEHRUpdates() {
         return new ArrayList<>(ehrUpdates);
     }
 
-    /**
-     * Get referral queue
-     */
+    /* Get referral queue */
     public List<Referral> getReferralQueue() {
         return new ArrayList<>(referralQueue);
     }
 
-    /**
-     * Clear audit trail (for testing purposes)
-     */
+    /* Clear audit trail (for testing purposes) */
     public void clearAuditTrail() {
         emailCommunications.clear();
         ehrUpdates.clear();
