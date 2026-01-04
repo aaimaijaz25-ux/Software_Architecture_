@@ -1,0 +1,22 @@
+=== PATIENT REFERRAL ===
+
+Referral ID: R001
+Date: 2025-09-10
+Urgency Level: Routine
+Status: Completed
+
+PATIENT INFORMATION:
+Patient ID: P005
+
+REFERRING INFORMATION:
+Clinician ID: C001
+Facility: S001
+
+RECEIVING INFORMATION:
+Clinician ID: C005
+Facility: H001
+
+CLINICAL SUMMARY:
+35-year-old male with Grade 2/6 systolic murmur detected during routine examination. No symptoms of chest pain or breathlessness.
+
+=== END OF REFERRAL ===

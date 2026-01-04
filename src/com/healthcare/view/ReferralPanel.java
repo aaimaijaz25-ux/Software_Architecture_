@@ -185,8 +185,56 @@ public class ReferralPanel extends JPanel {
         refreshData();
         clearForm();
     }
+    
+    private void generateReferralFile() {
+        int selectedRow = table.getSelectedRow();
 
-    private void generateReferralFile() {}
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Please select a referral to generate the report.",
+                    "No Referral Selected",
+                    JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        // Create Referral object from selected row
+        Referral referral = new Referral(
+                (String) tableModel.getValueAt(selectedRow, 0),  // Referral ID
+                (String) tableModel.getValueAt(selectedRow, 1),  // Patient ID
+                (String) tableModel.getValueAt(selectedRow, 2),  // Referring Clinician
+                (String) tableModel.getValueAt(selectedRow, 3),  // Receiving Clinician
+                (String) tableModel.getValueAt(selectedRow, 4),  // Referring Facility
+                (String) tableModel.getValueAt(selectedRow, 5),  // Receiving Facility
+                (String) tableModel.getValueAt(selectedRow, 6),  // Referral Date
+                (String) tableModel.getValueAt(selectedRow, 7),  // Urgency
+                (String) tableModel.getValueAt(selectedRow, 8),  // Reason
+                (String) tableModel.getValueAt(selectedRow, 9),  // Clinical Summary
+                (String) tableModel.getValueAt(selectedRow, 10), // Investigations
+                (String) tableModel.getValueAt(selectedRow, 11), // Appointment ID
+                (String) tableModel.getValueAt(selectedRow, 12), // Notes
+                (String) tableModel.getValueAt(selectedRow, 13), // Status
+                (String) tableModel.getValueAt(selectedRow, 14), // Created Date
+                (String) tableModel.getValueAt(selectedRow, 15)  // Last Updated
+        );
+
+        // Output file name
+        String fileName = "referral_" + referral.getReferralID() + ".txt";
+
+        // Generate file using ReferralManager
+        com.healthcare.referral.ReferralManager
+                .getInstance()
+                .generateReferralFile(referral, fileName);
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Referral report generated successfully:\n" + fileName,
+                "File Generated",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+    }
+
 
     private Referral createReferralFromForm() {
         return new Referral(

@@ -58,37 +58,35 @@ public class DataManager {
         fields.add(currentField.toString().trim());
         return fields.toArray(new String[0]);
     }
-
     public void loadPatients(String filePath) {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line = br.readLine(); // Skip header
             while ((line = br.readLine()) != null && !line.trim().isEmpty()) {
                 String[] fields = parseCSVLine(line);
-                // patients.csv
-                    Patient patient = new Patient(
-                        fields[0],  // patient_id
-                        fields[1],  // first_name
-                        fields[2],  // last_name
-                        fields[3],  // date_of_birth
-                        fields[5],  // gender
-                        fields[4],  // nhs_number
-                        fields[7],  // email
-                        fields[6],  // phone_number
-                        fields[8],  // address
-                        fields[9],  // postcode
-                        fields[10], // emergency_contact_name
-                        fields[11], // emergency_contact_phone
-                        fields[12], // registration_date
-                        fields[13]  // gp_surgery_id
-                    );
-                    patients.add(patient);
-                }
+
+                Patient patient = new Patient(
+                    fields[0],  // patient_id
+                    fields[1],  // first_name
+                    fields[2],  // last_name
+                    fields[3],  // date_of_birth
+                    fields[5],  // gender
+                    fields[4],  // nhs_number
+                    fields[7],  // email
+                    fields[6],  // phone_number
+                    fields[8],  // address
+                    fields[9],  // postcode
+                    fields[10], // emergency_contact_name
+                    fields[11], // emergency_contact_phone
+                    fields[12], // registration_date
+                    fields[13]  // gp_surgery_id
+                );
+                patients.add(patient);
             }
         } catch (IOException e) {
             System.err.println("Error loading patients: " + e.getMessage());
         }
     }
-
+    
     public void loadClinicians(String filePath) {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line = br.readLine(); // Skip header
