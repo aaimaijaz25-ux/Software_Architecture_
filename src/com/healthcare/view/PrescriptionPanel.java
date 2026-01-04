@@ -1,5 +1,8 @@
 package com.healthcare.view;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 import com.healthcare.controller.HealthcareController;
 import com.healthcare.model.Prescription;
 
@@ -143,6 +146,10 @@ public class PrescriptionPanel extends JPanel {
         JButton delete = new JButton("Delete");
         delete.addActionListener(e -> deletePrescription());
         panel.add(delete);
+        
+        JButton generate = new JButton("Generate File");
+        generate.addActionListener(e -> generatePrescriptionFile());
+        panel.add(generate);
 
         JButton clear = new JButton("Clear");
         clear.addActionListener(e -> clearForm());
@@ -183,6 +190,59 @@ public class PrescriptionPanel extends JPanel {
         controller.deletePrescription(tableModel.getValueAt(r, 0).toString());
         refreshData();
         clearForm();
+    }
+
+    private void generatePrescriptionFile() {
+        int row = table.getSelectedRow();
+
+        if (row < 0) {
+            JOptionPane.showMessageDialog(this,
+                    "Please select a prescription first",
+                    "No Selection",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        Prescription p = controller.getAllPrescriptions().get(row);
+
+        String fileName = "prescription_" + p.getPrescriptionID() + ".txt";
+
+        try (FileWriter writer = new FileWriter(fileName)) {
+
+            writer.write("PRESCRIPTION REPORT\n");
+            writer.write("===================\n\n");
+
+            writer.write("Prescription ID: " + p.getPrescriptionID() + "\n");
+            writer.write("Patient ID: " + p.getPatientID() + "\n");
+            writer.write("Clinician ID: " + p.getClinicianID() + "\n");
+            writer.write("Appointment ID: " + p.getAppointmentID() + "\n\n");
+
+            writer.write("Medication: " + p.getMedication() + "\n");
+            writer.write("Dosage: " + p.getDosage() + "\n");
+            writer.write("Frequency: " + p.getFrequency() + "\n");
+            writer.write("Duration (Days): " + p.getDurationDays() + "\n");
+            writer.write("Quantity: " + p.getQuantity() + "\n\n");
+
+            writer.write("Pharmacy: " + p.getPharmacy() + "\n");
+            writer.write("Date Prescribed: " + p.getDatePrescribed() + "\n");
+            writer.write("Issue Date: " + p.getIssueDate() + "\n");
+            writer.write("Collection Status: " + p.getCollectionStatus() + "\n");
+            writer.write("Collection Date: " + p.getCollectionDate() + "\n\n");
+
+            writer.write("Instructions:\n");
+            writer.write(p.getInstructions() + "\n");
+
+            JOptionPane.showMessageDialog(this,
+                    "Prescription file generated:\n" + fileName,
+                    "Success",
+                    JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this,
+                    "Error generating file",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private Prescription getPrescriptionFromForm() {
